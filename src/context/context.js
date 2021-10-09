@@ -8,7 +8,8 @@ state={
     sidebarOpen:false,
     cartOpen:false,
     cartItems:10,
-    links:linkData
+    links:linkData,
+    cart:[]
 }
 //handle sidebar
 handleSidebar=()=>{

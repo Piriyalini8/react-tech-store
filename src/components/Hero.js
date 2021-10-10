@@ -17,7 +17,7 @@ text-align: center;
 display: flex;
 align-items: center;
 justify-content: center;
-min-height: ${props => (props.max ? "100vh" : "60h")};
+min-height: ${props => (props.max ? "100vh" : "60vh")};
 color: var(--mainWhite);
 background: linear-gradient(var(--primaryRGBA), var(--primaryRGBA)), 
 url(${props => props.img}) center/cover no-repeat;

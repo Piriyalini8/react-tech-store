@@ -30,7 +30,7 @@ componentDidMount(){
 }
 
 //set products
-setProducts = (products) =>{
+setProducts = products =>{
     let storeProducts = products.map(item =>{
         const {id} = item.sys;
         const image = item.fields.image.fields.file.url;
@@ -49,12 +49,12 @@ setProducts = (products) =>{
     })
 };
 // get cart from local storage
-getStorageProduct=()=>{
-    return [];
-};
-// get product from local Storage
 getStorageCart=()=>{
     return {};
+};
+// get product from local Storage
+getStorageProduct=()=>{
+    return [];
 };
 // get totals
 getTotals=()=>{};
@@ -63,11 +63,33 @@ addTotals=()=>{};
 // sync storage
 syncStorage=()=>{};
 // add to cart
-addToCart=(id)=>{
-    console.log(`add to cart ${id}`);
-};
+addToCart = id => {
+    let tempCart = [...this.state.cart];
+    let tempProducts = [...this.state.storeProducts];
+    let tempItem = tempCart.find(item => item.id === id);
+    if (!tempItem) {
+      tempItem = tempProducts.find(item => item.id === id);
+      let total = tempItem.price;
+      let cartItem = { ...tempItem, count: 1, total };
+      tempCart = [...tempCart, cartItem];
+    } else {
+      tempItem.count++;
+      tempItem.total = tempItem.price * tempItem.count;
+      tempItem.total = parseFloat(tempItem.total.toFixed(2));
+    }
+    this.setState(
+      () => {
+        return { cart: tempCart };
+      },
+      () => {
+        this.addTotals();
+        this.syncStorage();
+        this.openCart();
+      }
+    );
+  };
 // set single product
-setSingleProduct = (id)=>{
+setSingleProduct = id=>{
     console.log(`set single product ${id}`);
 }
 //handle sidebar

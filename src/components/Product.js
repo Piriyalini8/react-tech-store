@@ -4,30 +4,30 @@ import { Link } from 'react-router-dom';
 import { FaSearch, FaCartPlus } from 'react-icons/fa';
 import { ProductConsumer } from '../context';
 
-export default function Product({product}) {
+export default function Product({ product }) {
     return <ProductConsumer>
         {value => {
-            const {addToCart, SetSingleProduct} = value;
-            return(
+            const { addToCart, SetSingleProduct } = value;
+            return (
                 <ProductWrapper className="col-10 mx-auto col-sm-8 col-md-6 col-lg-4 my-3">
                     <div className="card">
                         <div className="img-container">
-                            <img 
-                            src={product.image} 
-                            className="card-img-top p-5" 
-                            alt="product"
-                            style={{height: "320px"}}
+                            <img
+                                src={product.image}
+                                className="card-img-top p-5"
+                                alt="product"
+                                style={{ height: "320px" }}
                             />
-                            <div  className="product-icons">
-                                <Link 
-                                to={`/products/${product.id}`}
-                                onClick={()=>SetSingleProduct(product.id)}
+                            <div className="product-icons">
+                                <Link
+                                    to={`/products/${product.id}`}
+                                    onClick={() => SetSingleProduct(product.id)}
                                 >
-                                    <FaSearch className="icon"/>
+                                    <FaSearch className="icon" />
                                 </Link>
-                                <FaCartPlus 
-                                className="icon"
-                                onClick={()=>addToCart(product.id)}
+                                <FaCartPlus
+                                    className="icon"
+                                    onClick={() => addToCart(product.id)}
                                 />
                             </div>
                         </div>

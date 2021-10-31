@@ -32,6 +32,7 @@ export default function Product({ product }) {
                             </div>
                         </div>
                         <div className="card-body d-flex justify-content-between">
+                            <p className="mb-0">{product.id}</p>
                             <p className="mb-0">{product.title}</p>
                             <p className="mb-0 text-main"> $ {product.price}</p>
                         </div>

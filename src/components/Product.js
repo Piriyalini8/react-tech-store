@@ -7,7 +7,7 @@ import { ProductConsumer } from '../context';
 export default function Product({ product }) {
     return <ProductConsumer>
         {value => {
-            const { addToCart, SetSingleProduct } = value;
+            const { addToCart, setSingleProduct } = value;
             return (
                 <ProductWrapper className="col-10 mx-auto col-sm-8 col-md-6 col-lg-4 my-3">
                     <div className="card">
@@ -21,7 +21,7 @@ export default function Product({ product }) {
                             <div className="product-icons">
                                 <Link
                                     to={`/products/${product.id}`}
-                                    onClick={() => SetSingleProduct(product.id)}
+                                    onClick={() => setSingleProduct(product.id)}
                                 >
                                     <FaSearch className="icon" />
                                 </Link>
@@ -32,7 +32,6 @@ export default function Product({ product }) {
                             </div>
                         </div>
                         <div className="card-body d-flex justify-content-between">
-                            <p className="mb-0">{product.id}</p>
                             <p className="mb-0">{product.title}</p>
                             <p className="mb-0 text-main"> $ {product.price}</p>
                         </div>
